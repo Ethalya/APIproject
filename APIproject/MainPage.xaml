@@ -5,12 +5,82 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="APIproject.MainPage">
+    
+  <ContentPage.Content>
+      <StackLayout BackgroundColor="#474647">
+        <Button
+           x:Name="btnPortfolio"
+           Text="Take a look at my portfolio!"
+           BackgroundColor="HotPink"
+           Margin="20, 20, 20, 50"
+           HeightRequest="40"    
+           Clicked="btnPortfolio_Clicked"
+        ></Button>
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <Label 
+           x:Name="lblLogin"
+           Text="(x"
+           Rotation="270"
+           TextColor="HotPink"
+           FontSize="50"
+           LineBreakMode="NoWrap"
+           FontAttributes="Bold"
+           IsVisible="True"
+           VerticalTextAlignment="Start"
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+           VerticalOptions="CenterAndExpand">
+         </Label>
 
+            <Label
+            Text="Login"
+            TextColor="Black"
+            Margin="0, 0, 0, 0"
+            HorizontalOptions="Center">
+        </Label>
+
+        <Entry
+            x:Name="entLogin"
+            BackgroundColor="#474647"           
+            TextColor="Pink"
+            Margin="50, 0, 50, 20"           
+        ></Entry>
+
+        <Label
+            Text="Password"
+            TextColor="Black"
+            Margin="0, 0, 0, 0"
+            HorizontalOptions="Center">
+        </Label>
+
+        <Entry
+            x:Name="entPass"
+            BackgroundColor="#474647"
+            TextColor="Pink"
+            Margin="50, 0, 50, 20"
+        ></Entry>
+
+        <Button 
+            x:Name="btnLogIn"
+            Text="Login"
+            BackgroundColor="HotPink" 
+            TextColor="Black"
+            Margin="50, 0, 50, 20"
+            Clicked="btnLogIn_Clicked">
+        </Button>
+
+        <Label
+            x:Name="btnRegPanel"
+            Text="Register now!"
+            TextColor="HotPink"
+            HorizontalOptions="Center"
+            Margin="0, 0, 0, 20"
+            FontAttributes="Bold"
+            FontSize="15">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding regPanel}"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+    </StackLayout>
+  </ContentPage.Content>
 </ContentPage>

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APIproject.Register">
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#474647">
+           <Label 
+           x:Name="lblLogin"
+           Text="(x"
+           Rotation="270"
+           TextColor="HotPink"
+           FontSize="50"
+           LineBreakMode="NoWrap"
+           FontAttributes="Bold"
+           IsVisible="True"
+           VerticalTextAlignment="Start"
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand">
+           </Label>
+            
+           <Label
+            Text="Login"
+            TextColor="Black"
+            Margin="0, 0, 0, 0"
+            HorizontalOptions="Center">
+            </Label>
+            
+            <Entry
+            x:Name="entLogin"
+            BackgroundColor="#474647"           
+            TextColor="Pink"
+            Margin="50, 0, 50, 20"           
+            ></Entry>
+
+            <Label
+            Text="Password"
+            TextColor="Black"
+            Margin="0, 0, 0, 0"
+            HorizontalOptions="Center">
+            </Label>
+            
+            <Entry
+            x:Name="entPass"
+            BackgroundColor="#474647"
+            TextColor="Pink"
+            Margin="50, 0, 50, 20"
+            ></Entry>
+
+            <Label
+            Text="Repeat password"
+            TextColor="Black"
+            Margin="0, 0, 0, 0"
+            HorizontalOptions="Center">
+            </Label>
+
+            <Entry
+            x:Name="entRePass"
+            BackgroundColor="#474647"
+            TextColor="Pink"
+            Margin="50, 0, 50, 20"
+            ></Entry>
+
+            <Label
+            Text="Name"
+            TextColor="Pink"
+            Margin="0, 0, 0, 0"
+            HorizontalOptions="Center">
+            </Label>
+
+            <Entry
+            x:Name="entName"
+            BackgroundColor="#474647"
+            TextColor="Pink"
+            Margin="50, 0, 50, 20"
+            ></Entry>
+
+            <Label
+            Text="Album"
+            TextColor="Pink"
+            Margin="0, 0, 0, 0"
+            HorizontalOptions="Center">
+            </Label>
+
+            <Entry
+            x:Name="entAlbum"
+            BackgroundColor="#474647"
+            TextColor="Pink"
+            Margin="50, 0, 50, 20"
+            ></Entry>
+
+            <Button 
+            x:Name="btnRegister"
+            Text="Register"
+            BackgroundColor="HotPink" 
+            TextColor="Black"
+            Margin="50, 0, 50, 50"
+            Clicked="btnRegister_Clicked">
+            </Button>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -133,4 +133,9 @@
       <Name>APIproject</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\XD.png" />
+    <BundleResource Include="Resources\XDD.png" />
+    <BundleResource Include="Resources\XDDD.png" />
+  </ItemGroup>
 </Project>

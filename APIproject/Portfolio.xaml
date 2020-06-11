@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APIproject.Portfolio">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#474647">
+
+            <Label 
+           x:Name="lblLogin"
+           Text="(x"
+           Rotation="270"
+           TextColor="HotPink"
+           FontSize="50"
+           Margin="0, 50, 0, 0"
+           LineBreakMode="NoWrap"
+           FontAttributes="Bold"
+           IsVisible="True"
+           VerticalTextAlignment="Start"
+           HorizontalOptions="Center"
+           VerticalOptions="StartAndExpand">
+            </Label>
+
+            <Grid>
+                <Image
+                Source="XD.png"
+                Grid.Column="0"
+                Grid.Row="0">
+                </Image>
+
+                <Image
+                Source="XDD.png"
+                Grid.Column="0"
+                Grid.Row="1">
+                </Image>
+
+                <Image
+                Source="XDDD.png"
+                Grid.Column="0"
+                Grid.Row="2">
+                </Image>
+            </Grid>
+
+            <Button 
+            x:Name="btnBack"
+            Text="Back to login"
+            BackgroundColor="HotPink" 
+            TextColor="Black"
+            Margin="50, 100, 50, 20"
+            Clicked="btnBack_Clicked">
+            </Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
