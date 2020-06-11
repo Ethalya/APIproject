@@ -27,7 +27,8 @@
                 <Image
                 Source="XD.png"
                 Grid.Column="0"
-                Grid.Row="0">
+                Grid.Row="0"
+                >
                 </Image>
 
                 <Image
