@@ -16,7 +16,7 @@ namespace APIproject.Services
         public DataStore()
         {
             _client = new HttpClient(GetInsecureHandler());
-            _client.BaseAddress = new Uri($"https://192.168.1.105:45455");
+            _client.BaseAddress = new Uri($"https://192.168.145.105:45456");
         }
 
         bool IsConnected => Connectivity.NetworkAccess == NetworkAccess.Internet;

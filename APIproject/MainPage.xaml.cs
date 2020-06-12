@@ -15,23 +15,13 @@ namespace APIproject
     public partial class MainPage : ContentPage
     {
         MainPageViewModel viewModel;
-        public MainPage(string login)
+        public MainPage()
         {
             InitializeComponent();
             viewModel = new MainPageViewModel();
             BindingContext = viewModel;
         }
 
-        public ICommand regPanel
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-                    await Navigation.PushAsync(new Register());
-                });
-            }
-        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -42,7 +32,7 @@ namespace APIproject
             entPass.Text = "";
         }
 
-        private async Task btnLogIn_Clicked(object sender, EventArgs e)
+        private async void btnLogIn_Clicked(object sender, EventArgs e)
         {
             if (viewModel.Login.Length > 0 && viewModel.Password.Length > 0)
             {
@@ -62,9 +52,14 @@ namespace APIproject
             }
         }
 
-        private async Task btnPortfolio_Clicked(object sender, EventArgs e)
+        private async void btnPortfolio_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Portfolio());
+        }
+
+        private async void btnRegPanel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Register());
         }
     }
 }

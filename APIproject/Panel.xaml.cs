@@ -13,7 +13,7 @@ namespace APIproject
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Panel : ContentPage
     {
-        MainPageViewModel viewModel;
+        PanelViewModel viewModel;
         public Panel(string login)
         {
             InitializeComponent();

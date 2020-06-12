@@ -18,9 +18,9 @@ namespace APIproject
             InitializeComponent();
         }
 
-        private void btnBack_Clicked(object sender, EventArgs e)
+        private async void btnBack_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new MainPage();
+            await Navigation.PopAsync();
         }
     }
 }

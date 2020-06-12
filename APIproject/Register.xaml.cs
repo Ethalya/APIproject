@@ -23,7 +23,7 @@ namespace APIproject
             BindingContext = viewModel;
         }
 
-        private async Task btnRegister_Clicked(object sender, EventArgs e)
+        private async void btnRegister_Clicked(object sender, EventArgs e)
         {
             if (viewModel.Login.Length > 0 && viewModel.Password.Length > 0 && (viewModel.Password == viewModel.PasswordRepeat))
             {
@@ -44,7 +44,7 @@ namespace APIproject
             }
         }
 
-        private async Task btnBack_Clicked(object sender, EventArgs e)
+        private async void btnBack_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }

@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="APIproject.MainPage">
+             x:Class="APIproject.MainPage"
+             NavigationPage.HasNavigationBar="False">
     
   <ContentPage.Content>
       <StackLayout BackgroundColor="#474647">
@@ -71,18 +72,17 @@
             Clicked="btnLogIn_Clicked">
         </Button>
 
-        <Label
+            <Button
             x:Name="btnRegPanel"
             Text="Register now!"
-            TextColor="HotPink"
+            TextColor="Black"
             HorizontalOptions="Center"
             Margin="0, 0, 0, 20"
             FontAttributes="Bold"
-            FontSize="15">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding regPanel}"/>
-            </Label.GestureRecognizers>
-        </Label>
+            FontSize="15"
+            BackgroundColor="HotPink"
+            Clicked="btnRegPanel_Clicked">
+            </Button>
 
     </StackLayout>
   </ContentPage.Content>
