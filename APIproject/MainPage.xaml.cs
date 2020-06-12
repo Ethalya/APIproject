@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APIproject.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -6,39 +7,64 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace APIproject
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        MainPageViewModel viewModel;
+        public MainPage(string login)
         {
             InitializeComponent();
-            BindingContext = this;
+            viewModel = new MainPageViewModel();
+            BindingContext = viewModel;
         }
 
         public ICommand regPanel
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
-                    App.Current.MainPage = new Register();
+                    await Navigation.PushAsync(new Register());
                 });
             }
         }
-
-        private void btnLogIn_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            App.Current.MainPage = new Panel();
+            base.OnAppearing();
+
+            viewModel.Login = "";
+            viewModel.Password = "";
+            entLogin.Text = "";
+            entPass.Text = "";
         }
 
-        private void btnPortfolio_Clicked(object sender, EventArgs e)
+        private async Task btnLogIn_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new Portfolio();
+            if (viewModel.Login.Length > 0 && viewModel.Password.Length > 0)
+            {
+                var x = await viewModel.Register();
+                if (x)
+                {
+                    await Navigation.PushAsync(new Panel(viewModel.Login));
+                }
+                else
+                {
+                    await DisplayAlert("Sth bad happened", "Bad login or password!", "X");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Sth bad happened", "Don't leave anything empty", "X");
+            }
+        }
+
+        private async Task btnPortfolio_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Portfolio());
         }
     }
 }

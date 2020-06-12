@@ -24,14 +24,14 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Users>>> Getusers()
         {
-            return await _context.users.ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Users>> GetUsers(int id)
         {
-            var users = await _context.users.FindAsync(id);
+            var users = await _context.Users.FindAsync(id);
 
             if (users == null)
             {
@@ -79,7 +79,7 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<Users>> PostUsers(Users users)
         {
-            _context.users.Add(users);
+            _context.Users.Add(users);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUsers", new { id = users.id }, users);
@@ -89,13 +89,13 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Users>> DeleteUsers(int id)
         {
-            var users = await _context.users.FindAsync(id);
+            var users = await _context.Users.FindAsync(id);
             if (users == null)
             {
                 return NotFound();
             }
 
-            _context.users.Remove(users);
+            _context.Users.Remove(users);
             await _context.SaveChangesAsync();
 
             return users;
@@ -103,7 +103,7 @@ namespace API.Controllers
 
         private bool UsersExists(int id)
         {
-            return _context.users.Any(e => e.id == id);
+            return _context.Users.Any(e => e.id == id);
         }
     }
 }
