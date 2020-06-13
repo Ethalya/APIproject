@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.DataAccess;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -27,83 +28,48 @@ namespace API.Controllers
             return await _context.users.ToListAsync();
         }
 
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(int id)
-        {
-            var users = await _context.users.FindAsync(id);
-
-            if (users == null)
-            {
-                return NotFound();
-            }
-
-            return users;
-        }
-
-        // PUT: api/Users/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(int id, Users users)
-        {
-            if (id != users.id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(users).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UsersExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Users
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users users)
+        public async Task<Users> Login([FromBody] UserModel user)
         {
-            _context.users.Add(users);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUsers", new { id = users.id }, users);
-        }
-
-        // DELETE: api/Users/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Users>> DeleteUsers(int id)
-        {
-            var users = await _context.users.FindAsync(id);
-            if (users == null)
+            if (UsersExists(user.login))
             {
-                return NotFound();
+                var item = _context.users.FirstOrDefault(x => x.login == user.login);
+                if (item.password == user.password)
+                {
+
+                    return item;
+                }
             }
 
-            _context.users.Remove(users);
-            await _context.SaveChangesAsync();
-
-            return users;
+            return null;
         }
 
-        private bool UsersExists(int id)
+        [Route("Register")]
+        [HttpPost]
+        public async Task<ActionResult> Register([FromBody] UserModel user)
         {
-            return _context.users.Any(e => e.id == id);
+            if (!UsersExists(user.login))
+            {
+                _context.users.Add(new Users()
+                {
+                    login = user.login,
+                    password = user.password,
+                    name = user.name,
+                    album = user.album
+                });
+
+                await _context.SaveChangesAsync();
+
+                return StatusCode(200);
+            }
+            else
+                return BadRequest();
+        }
+
+
+        private bool UsersExists(string login)
+        {
+            return _context.users.Any(e => e.login == login);
         }
     }
 }

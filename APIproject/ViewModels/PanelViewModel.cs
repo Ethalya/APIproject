@@ -7,47 +7,18 @@ using Xamarin.Forms;
 
 namespace APIproject.ViewModels
 {
-    public class PanelViewModel : BaseViewModel
+    public class PanelViewModel
     {
-        public ObservableCollection<string> Items { get; set; }
 
-        public string login { get; set; }
+        public string Name { get; set; }
+        public string Album { get; set; }
 
-        public Command LoadCommand { get; set; }
-        public PanelViewModel(string _login)
+        public PanelViewModel(string _name, string _album)
         {
-            login = _login;
+            Name = _name;
 
-            Items = new ObservableCollection<string>();
-
-            LoadCommand = new Command(async () => await Load());
+            Album = _album;
         }
 
-        async Task Load()
-        {
-            IsBusy = true;
-
-            try
-            {
-                Items.Clear();
-
-                var items = await Data.RegisteredUsers();
-
-                foreach (var item in items)
-                {
-                    if (!item.Equals(login))
-                        Items.Add(item);
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex);
-            }
-            finally
-            {
-
-                IsBusy = false;
-            }
-        }
     }
 }

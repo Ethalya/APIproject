@@ -12,18 +12,21 @@ namespace APIproject.ViewModels
         public string Login { get; set; }
         public string Password { get; set; }
         public string PasswordRepeat { get; set; }
+        public string Name { get; set; }
+        public string Album { get; set; }
 
         public RegisterViewModel()
         {
-
             Login = "";
             Password = "";
             PasswordRepeat = "";
+            Name = "";
+            Album = "";
         }
 
         public async Task<bool> Register()
         {
-            User user = new User() { login = Login, password = Password };
+            User user = new User() { login = Login, password = Password, name = Name, album = Album };
 
             try
             {

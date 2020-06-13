@@ -36,10 +36,10 @@ namespace APIproject
         {
             if (viewModel.Login.Length > 0 && viewModel.Password.Length > 0)
             {
-                var x = await viewModel.Register();
-                if (x)
+                var x = await viewModel.Logging();
+                if (x != null)
                 {
-                    await Navigation.PushAsync(new Panel(viewModel.Login));
+                    await Navigation.PushAsync(new Panel(x.name, x.album));
                 }
                 else
                 {

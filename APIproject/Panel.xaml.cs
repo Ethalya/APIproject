@@ -14,14 +14,18 @@ namespace APIproject
     public partial class Panel : ContentPage
     {
         PanelViewModel viewModel;
-        public Panel(string login)
+        public Panel(string _name, string _album)
         {
             InitializeComponent();
 
-            viewModel = new PanelViewModel(login);
+            viewModel = new PanelViewModel(_name, _album);
 
             BindingContext = viewModel;
         }
 
+        private async void btnLogout_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
     }
 }

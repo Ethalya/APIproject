@@ -19,7 +19,7 @@ namespace APIproject.ViewModels
             Password = "";
         }
 
-        public async Task<bool> Register()
+        public async Task<User> Logging()
         {
             User user = new User() { login = Login, password = Password };
 
@@ -32,7 +32,7 @@ namespace APIproject.ViewModels
                 Debug.WriteLine(ex);
             }
 
-            return false;
+            return null;
         }
     }
 }

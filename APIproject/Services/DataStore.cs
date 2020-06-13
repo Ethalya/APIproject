@@ -16,7 +16,7 @@ namespace APIproject.Services
         public DataStore()
         {
             _client = new HttpClient(GetInsecureHandler());
-            _client.BaseAddress = new Uri($"https://192.168.145.105:45456");
+            _client.BaseAddress = new Uri($"https://192.168.145.105:45455/");
         }
 
         bool IsConnected => Connectivity.NetworkAccess == NetworkAccess.Internet;
@@ -38,7 +38,7 @@ namespace APIproject.Services
             return false;
         }
 
-        public async Task<bool> Login(User user)
+        public async Task<User> Login(User user)
         {
             if (user != null || !IsConnected)
             {
@@ -48,10 +48,13 @@ namespace APIproject.Services
 
                 if (odp.IsSuccessStatusCode)
                 {
-                    return true;
+                    var content = await odp.Content.ReadAsStringAsync();
+
+                    return JsonConvert.DeserializeObject<User>(content);
                 }
+
             }
-            return false;
+            return null;
         }
 
         public async Task<IEnumerable<string>> RegisteredUsers()
