@@ -20,24 +20,10 @@
             Clicked="btnBack_Clicked">
             </Button>
 
-            <Label 
-           x:Name="lblLogin"
-           Text="(x"
-           Rotation="270"
-           TextColor="HotPink"
-           FontSize="50"
-           LineBreakMode="NoWrap"
-           FontAttributes="Bold"
-           IsVisible="True"
-           VerticalTextAlignment="Start"
-           HorizontalOptions="CenterAndExpand"
-           VerticalOptions="CenterAndExpand">
-            </Label>
-
             <Label
             Text="Login"
             TextColor="Black"
-            Margin="0, 0, 0, 0"
+            Margin="0, 50, 0, 0"
             HorizontalOptions="Center">
             </Label>
 
